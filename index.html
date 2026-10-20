@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEC Solutions - Instrumentation, Electrical & Control</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    input:focus, select:focus, textarea:focus { outline: none; ring: 2px solid #38bdf8; }
+    input[type="number"]::-webkit-inner-spin-button, 
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(34, 211, 238, 0.15) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .marquee-container {
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-content {
+      display: flex;
+      animation: marquee 20s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .industry-card {
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+    }
+    .industry-card:hover { transform: scale(1.02); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-cyan-900 selection:text-cyan-100 flex flex-col">
+
+  <!-- GLOBAL NAV -->
+  <nav class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="showHome()">
+        <span class="text-cyan-400 text-2xl">⚡</span>
+        <span class="text-xl font-bold text-white tracking-wide">IEC Solutions</span>
+      </div>
+      <div id="navLinks" class="hidden md:flex gap-6 text-sm font-medium text-slate-400">
+        <button onclick="showHome()" class="hover:text-cyan-400 transition-colors">Home</button>
+        <button class="hover:text-cyan-400 transition-colors">EPC Services</button>
+        <button class="hover:text-cyan-400 transition-colors">Training</button>
+        <button class="hover:text-cyan-400 transition-colors">Blog</button>
+      </div>
+      <div>
+        <button id="navLoginBtn" onclick="showLogin()" class="px-5 py-2 text-sm font-bold rounded bg-cyan-900 text-cyan-100 border border-cyan-700 shadow-sm hover:bg-cyan-800 transition-colors">Engineer Login</button>
+        <button id="navLogoutBtn" onclick="logoutUser()" class="hidden px-5 py-2 text-sm font-bold rounded bg-slate-800 text-rose-400 border border-slate-700 shadow-sm hover:bg-slate-700 transition-colors">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow">
+    <!-- ======================================================================= -->
+    <!-- VIEW 1: HOME PAGE                                                       -->
+    <!-- ======================================================================= -->
+    <div id="homeView" class="w-full">
+      
+      <!-- Hero Section -->
+      <section class="relative px-4 py-20 md:py-32 flex flex-col items-center justify-center text-center bg-grid-pattern border-b border-slate-800">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-950 pointer-events-none"></div>
+        <div class="z-10 max-w-4xl space-y-6">
+          <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight">Engineering Precision. <br/><span class="text-cyan-400">Delivered.</span></h1>
+          <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">The ultimate ecosystem for Instrumentation, Electrical & Control. Standardized calculation software, professional EPC consulting, and hands-on industrial training.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <button onclick="showLogin()" class="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-[0_0_20px_rgba(5,150,105,0.4)] transition-all">Access Calculator Suite</button>
+            <button class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-bold rounded-lg border border-slate-700 transition-all">Explore EPC Services</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand Marquee -->
+      <section class="border-b border-slate-800 bg-slate-900/50 py-6 overflow-hidden">
+        <div class="marquee-container max-w-7xl mx-auto opacity-60">
+          <div class="marquee-content flex gap-16 items-center text-2xl font-black text-slate-500 tracking-widest uppercase">
+            <span>ABB</span><span>Emerson</span><span>Yokogawa</span><span>Honeywell</span><span>Endress+Hauser</span><span>WIKA</span><span>Siemens</span><span>Schneider</span>
+            <!-- Duplicate for infinite scroll effect -->
+            <span>ABB</span><span>Emerson</span><span>Yokogawa</span><span>Honeywell</span><span>Endress+Hauser</span><span>WIKA</span><span>Siemens</span><span>Schneider</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content Layout (Pillars/Industries + Sidebar) -->
+      <section class="max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row gap-10">
+        
+        <!-- Left Column: Core Business -->
+        <div class="lg:w-2/3 space-y-16">
+          
+          <!-- Three Pillars -->
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-2">Our Core Divisions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500/50 transition-colors">
+                <div class="text-cyan-400 text-3xl mb-4">🧮</div>
+                <h3 class="text-lg font-bold text-white mb-2">Software Solutions</h3>
+                <p class="text-sm text-slate-400">Cloud-based modules for ISO 5167, ASME PTC 19.3, and IEC 60534. Precision sizing tools built by engineers, for engineers.</p>
+              </div>
+              <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500/50 transition-colors">
+                <div class="text-cyan-400 text-3xl mb-4">🏗️</div>
+                <h3 class="text-lg font-bold text-white mb-2">EPC & Consulting</h3>
+                <p class="text-sm text-slate-400">End-to-end Instrumentation & Automation design. From conceptual FEED engineering and SIL studies to detailed procurement assistance.</p>
+              </div>
+              <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500/50 transition-colors">
+                <div class="text-cyan-400 text-3xl mb-4">🎓</div>
+                <h3 class="text-lg font-bold text-white mb-2">Industrial Training</h3>
+                <p class="text-sm text-slate-400">Bridge the gap between academia and plant execution. Hands-on masterclasses in SPI, control logic, and instrument loop design.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Industries Served -->
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-8 border-b border-slate-800 pb-2">Industries We Serve</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Oil & Gas -->
+              <div class="industry-card relative h-40 rounded-xl overflow-hidden border border-slate-800 bg-gradient-to-br from-slate-800 to-slate-950 flex items-end p-4">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <h3 class="relative z-10 font-bold text-white text-lg">Oil & Gas</h3>
+              </div>
+              <!-- Petrochemical -->
+              <div class="industry-card relative h-40 rounded-xl overflow-hidden border border-slate-800 bg-gradient-to-br from-cyan-900 to-slate-950 flex items-end p-4">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <h3 class="relative z-10 font-bold text-white text-lg">Petrochemical</h3>
+              </div>
+              <!-- Renewables -->
+              <div class="industry-card relative h-40 rounded-xl overflow-hidden border border-slate-800 bg-gradient-to-br from-emerald-900 to-slate-950 flex items-end p-4">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <h3 class="relative z-10 font-bold text-white text-lg">Renewables</h3>
+              </div>
+              <!-- Water -->
+              <div class="industry-card relative h-40 rounded-xl overflow-hidden border border-slate-800 bg-gradient-to-br from-blue-900 to-slate-950 flex items-end p-4">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <h3 class="relative z-10 font-bold text-white text-lg">Water & Wastewater</h3>
+              </div>
+              <!-- Food & Pharma -->
+              <div class="industry-card relative h-40 rounded-xl overflow-hidden border border-slate-800 bg-gradient-to-br from-fuchsia-900 to-slate-950 flex items-end p-4 sm:col-span-2 lg:col-span-2">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <h3 class="relative z-10 font-bold text-white text-lg">Food & Pharma</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Blog Sidebar -->
+        <aside class="lg:w-1/3">
+          <div class="sticky top-24 bg-slate-900/80 border border-slate-800 p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><span class="text-cyan-400">📝</span> Field Notes & Blogs</h2>
+            
+            <div class="space-y-6">
+              <!-- Blog Post 1 -->
+              <a href="#" class="block group">
+                <p class="text-[10px] text-cyan-400 font-mono mb-1">ASME PTC 19.3 TW</p>
+                <h4 class="font-bold text-slate-200 group-hover:text-white transition-colors">Understanding Wake Frequency</h4>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">Why thermowells fail in high-velocity lines and how to calculate the Von Mises stress limits to prevent it.</p>
+              </a>
+              <!-- Blog Post 2 -->
+              <a href="#" class="block group">
+                <p class="text-[10px] text-cyan-400 font-mono mb-1">CALIBRATION & LEVEL</p>
+                <h4 class="font-bold text-slate-200 group-hover:text-white transition-colors">Wet Leg vs. Dry Leg Transmitters</h4>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">A complete guide to zero suppression and zero elevation for DP level transmitters in closed vessels.</p>
+              </a>
+              <!-- Blog Post 3 -->
+              <a href="#" class="block group">
+                <p class="text-[10px] text-amber-400 font-mono mb-1">TRAINING BATCH</p>
+                <h4 class="font-bold text-slate-200 group-hover:text-white transition-colors">Control Valve Sizing Masterclass</h4>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">Registrations are now open for the upcoming October intensive. Learn IEC 60534 standards from scratch.</p>
+              </a>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-800">
+              <h4 class="text-sm font-bold text-white mb-3">Subscribe to Newsletter</h4>
+              <div class="flex gap-2">
+                <input type="email" placeholder="engineer@epc.com" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-xs text-white">
+                <button class="bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-2 rounded text-xs font-bold transition-colors">Join</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- VIEW 2: LOGIN PAGE                                                      -->
+    <!-- ======================================================================= -->
+    <div id="loginView" class="hidden flex justify-center py-20 px-4">
+      <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-2xl w-full max-w-md">
+        <h2 class="text-2xl font-bold text-white mb-2 text-center">Engineer Login</h2>
+        <p class="text-center text-xs text-slate-400 mb-8">Access the IEC Solutions Calculator Suite</p>
+        <div class="space-y-4">
+          <div><label class="block text-xs text-slate-400 mb-1">Email / Corporate ID</label><input type="email" class="w-full border border-slate-700 rounded px-3 py-2 text-sm bg-slate-800 text-white" placeholder="engineer@epc.com" /></div>
+          <div><label class="block text-xs text-slate-400 mb-1">Password</label><input type="password" class="w-full border border-slate-700 rounded px-3 py-2 text-sm bg-slate-800 text-white" placeholder="••••••••" /></div>
+          <button onclick="loginUser()" class="w-full py-3 mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow transition-colors">Sign In to Dashboard</button>
+          <p class="text-xs text-center text-slate-500 pt-4 cursor-pointer hover:text-cyan-400">Don't have an account? Contact Sales</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const CALC_URL = '/calculator';
+
+    function setView(id) {
+      ['homeView', 'loginView'].forEach(v => document.getElementById(v).classList.toggle('hidden', v !== id));
+      window.scrollTo(0, 0);
+    }
+
+    function showHome() { setView('homeView'); }
+
+    function showLogin() {
+      if (sessionStorage.getItem('iecLoggedIn') === '1') { window.location.href = CALC_URL; return; }
+      setView('loginView');
+    }
+
+    function loginUser() {
+      sessionStorage.setItem('iecLoggedIn', '1');
+      window.location.href = CALC_URL;
+    }
+
+    function logoutUser() {
+      sessionStorage.removeItem('iecLoggedIn');
+      document.getElementById('navLoginBtn').classList.remove('hidden');
+      document.getElementById('navLogoutBtn').classList.add('hidden');
+      showHome();
+    }
+
+    if (sessionStorage.getItem('iecLoggedIn') === '1') {
+      document.getElementById('navLoginBtn').textContent = 'Open Calculators';
+      document.getElementById('navLogoutBtn').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
